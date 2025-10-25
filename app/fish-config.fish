@@ -69,15 +69,9 @@ end
 # Editor
 set -gx EDITOR vim
 
-# Aliases
-alias ll='ls -lah'
-alias g='git'
-alias dc='docker-compose'
-alias d='docker'
-
-# zoxide aliases
+# zoxide: Replace cd with smart jump
 if command -v zoxide > /dev/null
-    alias cd='z'  # Replace cd with zoxide
+    alias cd='z'  # Use zoxide for cd (smart directory jump)
 end
 
 EOF
