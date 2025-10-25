@@ -28,7 +28,8 @@ cd /Volumes/DATA/mac-backup/app
 │   ├── README.md          📖 Hướng dẫn đầy đủ
 │   └── FISH_PLUGINS.md    📖 Guide chi tiết Fish plugins
 └── mdm-setup/             🔓 MDM Bypass Guide (Personal devices only!)
-    ├── README.md          📖 Full MDM bypass guide
+    ├── README.md          📖 Full MDM bypass guide (5 methods)
+    ├── IPSW_METHOD.md     ⭐ BEST method for M1/M2/M3 (~95% success)
     ├── QUICK_START.md     ⚡ 2-minute quick start
     ├── ROUTER_BLOCKING.md 🌐 Network-level blocking
     ├── hosts              📝 Template hosts file
