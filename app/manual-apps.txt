@@ -1,0 +1,23 @@
+# Apps cài thủ công (không qua Homebrew)
+# Sau khi cài lại Mac, tải các apps này từ:
+
+- 3uTools.app
+- CapCut.app
+- Client Riot.app
+- Cubase 12.app
+- EVKey.app
+- HALion Library Manager.app
+- LM Studio.app
+- League of Legends.app
+- Microsoft Excel.app
+- Microsoft Outlook.app
+- Microsoft PowerPoint.app
+- Microsoft Word.app
+- NeatDownloadManager.app
+- ObinsKit.app
+- Sideloadly.app
+- Snagit 2024.app
+- Steinberg Library Manager.app
+- Unsplash Wallpapers.app
+- Yamaha Steinberg USB Control Panel.app
+- Zalo.app

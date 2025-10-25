@@ -1,0 +1,61 @@
+# Homebrew Bundle - Cleaned Version
+# Generated: 2025-10-25
+
+# Taps
+tap "ngrok/ngrok"
+
+# Essential CLI Tools
+brew "git"              # Version control
+brew "fish"             # Shell
+brew "fnm"              # Node.js version manager
+brew "direnv"           # Environment variable manager
+brew "fzf"              # Fuzzy finder
+brew "zoxide"           # Smart directory jumper
+
+# Cloud & DevOps
+brew "awscli"           # AWS command line
+brew "azure-cli"        # Azure command line
+
+# Python Development
+brew "pyenv"            # Python version manager
+brew "pyenv-virtualenv" # Python virtual environments
+
+# Database
+brew "libpq"            # PostgreSQL client only (psql, pg_dump)
+
+# GUI Applications - Development Tools
+cask "visual-studio-code"    # Code editor
+cask "postman"               # API testing
+cask "docker"                # Container platform
+cask "ngrok"                 # Tunneling
+cask "android-studio"        # Android IDE
+cask "github"                # GitHub Desktop
+cask "gitkraken"             # Git GUI client
+
+# GUI Applications - JetBrains IDEs
+cask "pycharm"               # PyCharm
+cask "webstorm"              # WebStorm
+cask "goland"                # GoLand
+cask "datagrip"              # DataGrip
+
+# GUI Applications - Browsers
+cask "google-chrome"         # Web browser
+cask "firefox"               # Web browser
+cask "microsoft-edge"        # Microsoft Edge
+
+# GUI Applications - Communication
+cask "slack"                 # Team communication
+cask "telegram"              # Messaging
+cask "zoom"                  # Video conferencing
+cask "messenger"             # Facebook Messenger
+
+# GUI Applications - Utilities
+cask "iterm2"                # Terminal replacement
+cask "the-unarchiver"        # Archive extractor
+cask "onyx"                  # System maintenance
+cask "spectacle"             # Window manager
+cask "vlc"                   # Media player
+cask "wireguard-tools"       # VPN client
+cask "anydesk"               # Remote desktop
+cask "google-drive"          # Cloud storage
+cask "folx"                  # Download manager
