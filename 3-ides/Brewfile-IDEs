@@ -1,0 +1,19 @@
+# Homebrew Bundle - IDEs Only
+# Generated: 2025-10-26
+#
+# IMPORTANT: Install this AFTER Fish is set as default shell!
+# Run AFTER: 1-app/setup.sh AND 2-fish-shell/setup-fish.sh
+#
+# This ensures all IDEs automatically detect Fish as default shell
+
+# JetBrains IDEs
+cask "pycharm"               # PyCharm (Python IDE)
+cask "webstorm"              # WebStorm (JavaScript/TypeScript IDE)
+cask "goland"                # GoLand (Go IDE)
+cask "datagrip"              # DataGrip (Database IDE)
+
+# Android Development
+cask "android-studio"        # Android IDE
+
+# NOTE: VSCode is already installed in 1-app/Brewfile because
+# it will be auto-configured via settings.json

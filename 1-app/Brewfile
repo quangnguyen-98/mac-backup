@@ -1,5 +1,6 @@
-# Homebrew Bundle - Cleaned Version
-# Generated: 2025-10-25
+# Homebrew Bundle - Essential Tools & Apps
+# Generated: 2025-10-26
+# NOTE: IDEs are in separate 3-ides/Brewfile-IDEs to install AFTER Fish is set as default shell
 
 # Taps
 tap "ngrok/ngrok"
@@ -12,6 +13,10 @@ brew "direnv"           # Environment variable manager
 brew "fzf"              # Fuzzy finder
 brew "zoxide"           # Smart directory jumper
 
+# Fonts (for Tide prompt)
+tap "homebrew/cask-fonts"
+cask "font-meslo-lg-nerd-font"  # Nerd Font for Tide icons
+
 # Cloud & DevOps
 brew "awscli"           # AWS command line
 brew "azure-cli"        # Azure command line
@@ -23,20 +28,13 @@ brew "pyenv-virtualenv" # Python virtual environments
 # Database
 brew "libpq"            # PostgreSQL client only (psql, pg_dump)
 
-# GUI Applications - Development Tools
-cask "visual-studio-code"    # Code editor
+# GUI Applications - Development Tools (NOT IDEs - those are in 3-ides)
+cask "visual-studio-code"    # Code editor (will be auto-configured for Fish)
 cask "postman"               # API testing
 cask "docker"                # Container platform
 cask "ngrok"                 # Tunneling
-cask "android-studio"        # Android IDE
 cask "github"                # GitHub Desktop
 cask "gitkraken"             # Git GUI client
-
-# GUI Applications - JetBrains IDEs
-cask "pycharm"               # PyCharm
-cask "webstorm"              # WebStorm
-cask "goland"                # GoLand
-cask "datagrip"              # DataGrip
 
 # GUI Applications - Browsers
 cask "google-chrome"         # Web browser
@@ -53,7 +51,7 @@ cask "messenger"             # Facebook Messenger
 cask "iterm2"                # Terminal replacement
 cask "the-unarchiver"        # Archive extractor
 cask "onyx"                  # System maintenance
-cask "spectacle"             # Window manager
+cask "rectangle"             # Window manager (better than Spectacle)
 cask "vlc"                   # Media player
 cask "wireguard-tools"       # VPN client
 cask "anydesk"               # Remote desktop
