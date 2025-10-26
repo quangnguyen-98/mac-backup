@@ -134,6 +134,38 @@ echo "  • IDEs were installed AFTER Fish was set as default shell"
 echo "  • On first launch, IDEs detect system default shell (\$SHELL)"
 echo "  • Fish is default → IDEs use Fish automatically"
 echo ""
+
+# =============================================================================
+# Plugins Instructions
+# =============================================================================
+echo ""
+echo -e "${BLUE}${BOLD}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+echo ""
+echo -e "${BOLD}🔌 Next: Install Plugins${NC}"
+echo ""
+echo "Cài thủ công qua: Settings → Plugins → Marketplace"
+echo ""
+echo "Plugins chung (tất cả IDE):"
+echo "  • GitToolBox, Rainbow Brackets"
+echo ""
+echo "Plugins riêng:"
+echo "  • ${BOLD}WebStorm:${NC} Vue.js, Import Cost"
+echo "  • ${BOLD}PyCharm:${NC} .env files support"
+echo "  • ${BOLD}Android Studio:${NC} ADB Idea, JSON To Kotlin Class"
+echo ""
+echo -e "${GREEN}⏱️  ~8-10 phút để cài tất cả${NC}"
+echo ""
+echo "Xem danh sách đầy đủ:"
+echo "  ${BOLD}open $SCRIPT_DIR/plugins/PLUGINS.md${NC}"
+echo ""
+echo -e "${YELLOW}TIP:${NC} Mở tất cả IDEs cùng lúc và cài song song!"
+echo ""
+
+# =============================================================================
+# Final Instructions
+# =============================================================================
+echo -e "${BLUE}${BOLD}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+echo ""
 echo "Next steps:"
 echo "  1. ${BOLD}Launch any IDE${NC} (PyCharm, WebStorm, etc.)"
 echo "  2. Open Terminal panel in IDE"

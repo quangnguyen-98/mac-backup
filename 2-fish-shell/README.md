@@ -24,6 +24,7 @@
 Tự động setup PATH cho:
 - ✅ Homebrew
 - ✅ Python (pyenv + virtualenv)
+- ✅ **Auto-activate virtualenv** - Tự động activate `.venv` khi cd vào project
 - ✅ Node.js (fnm với auto-switch khi cd)
 - ✅ PostgreSQL client (libpq)
 - ✅ Direnv

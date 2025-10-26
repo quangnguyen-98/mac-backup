@@ -194,6 +194,28 @@ end
 
 # Editor
 set -gx EDITOR vim
+
+# Auto-activate Python virtualenv
+# Automatically activate .venv when entering a directory with one
+function __auto_activate_venv --on-variable PWD
+    # Deactivate existing venv if we're leaving a venv directory
+    if test -n "$VIRTUAL_ENV"
+        set -l venv_dir (dirname (dirname $VIRTUAL_ENV))
+        # If current dir is not under the venv's project dir, deactivate
+        if not string match -q "$venv_dir*" $PWD
+            deactivate
+        end
+    end
+
+    # Activate venv if we enter a directory with .venv
+    if test -e .venv/bin/activate.fish; and test -z "$VIRTUAL_ENV"
+        source .venv/bin/activate.fish
+        echo "🐍 Activated virtualenv: .venv"
+    end
+end
+
+# Run once on shell start
+__auto_activate_venv
 EOF
 
 echo -e "${GREEN}✅ Config.fish created at ~/.config/fish/config.fish${NC}"
@@ -301,6 +323,7 @@ echo ""
 echo "What was configured:"
 echo "  ✅ Fish set as default shell"
 echo "  ✅ config.fish with all PATH setup (Homebrew, fnm, pyenv, zoxide, etc.)"
+echo "  ✅ Auto-activate Python virtualenv (.venv) on cd"
 echo "  ✅ Fisher plugin manager"
 echo "  ✅ Tide prompt (installed, ready to configure)"
 echo "  ✅ fzf.fish (Ctrl+R for history, Ctrl+Alt+F for files)"
