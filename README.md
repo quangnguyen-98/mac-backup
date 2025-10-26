@@ -1,212 +1,227 @@
-# Mac Backup & Restore
+# 🍎 Mac Setup Automation
 
-**One-command setup for fresh Mac M1**
+**Automated 3-step Mac setup** - Apps, Fish Shell, and IDEs installed automatically!
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Quick Start - After Mac Reset
 
 ```bash
-cd /Volumes/DATA/mac-backup/app
-./setup-mac.sh
+cd /path/to/mac-backup-main
+
+# Step 1: Install apps & tools (NO IDEs)
+cd 1-app
+./setup.sh
+
+# Step 2: Setup Fish shell & Tide prompt
+cd ../2-fish-shell
+./setup-fish.sh
+# → Restart Terminal
+
+# Step 3: Install IDEs (IMPORTANT: Run last!)
+cd ../3-ides
+./setup-ides.sh
 ```
 
-**That's it!** Uống cafe ☕ đợi 20-40 phút.
+**Total time:** ~30-45 minutes
 
 ---
 
-## 📁 Structure
+## 📂 Project Structure
 
 ```
-/Volumes/DATA/mac-backup/
-├── README.md              📖 File này (hướng dẫn ngắn gọn)
-├── app/                   📦 App & Tool Setup
-│   ├── setup-mac.sh       ⭐ CHẠY FILE NÀY
-│   ├── Brewfile           📦 39 packages (11 CLI + 28 GUI apps)
-│   ├── fish-config.fish   🐟 Fish shell auto-config
-│   ├── manual-apps.txt    📝 25 apps cài thủ công
-│   ├── README.md          📖 Hướng dẫn đầy đủ
-│   └── FISH_PLUGINS.md    📖 Guide chi tiết Fish plugins
-└── mdm-setup/             🔓 MDM Bypass Guide (Personal devices only!)
-    ├── README.md          📖 Full MDM bypass guide (5 methods)
-    ├── IPSW_METHOD.md     ⭐ BEST method for M1/M2/M3 (~95% success)
-    ├── QUICK_START.md     ⚡ 2-minute quick start
-    ├── ROUTER_BLOCKING.md 🌐 Network-level blocking
-    ├── hosts              📝 Template hosts file
-    └── mdm-bypass.sh      🤖 Automated bypass script
+mac-backup-main/
+├── 1-app/                    # Step 1: Apps & CLI tools
+│   ├── setup.sh              # Apps installation script
+│   ├── Brewfile              # Package list (NO IDEs)
+│   ├── manual-apps.txt       # Manual install apps
+│   └── README.md
+│
+├── 2-fish-shell/             # Step 2: Fish Shell
+│   ├── setup-fish.sh         # Fish + Tide setup
+│   ├── CONFIGURE-IDES.md     # Manual IDE config (if needed)
+│   └── README.md
+│
+├── 3-ides/                   # Step 3: IDEs (last!)
+│   ├── setup-ides.sh         # JetBrains IDEs installer
+│   └── Brewfile-IDEs         # IDE packages list
+│
+├── SETUP-GUIDE.md            # Full setup guide (DETAILED)
+└── README.md                 # This file (SUMMARY)
 ```
 
 ---
 
-## ⚡ What the script does
+## ⚡ Why 3 Steps?
 
-**Tự động cài:**
-- ✅ Homebrew
-- ✅ 11 CLI tools (git, fish, fzf, zoxide, pyenv, fnm, aws-cli...)
-- ✅ 28 GUI apps (VS Code, Chrome, JetBrains, Docker, Slack...)
-- ✅ Fish shell (default) + 4 plugins (Tide, fzf, zoxide, done)
-- ✅ Python 3.12 + Node.js LTS
-- ✅ Auto-config PATH cho tất cả tools
+### **Step 1: Apps & Tools**
+- Install Homebrew, CLI tools, GUI apps
+- **NO IDEs** (PyCharm, WebStorm, etc.)
+- VSCode is OK (will be auto-configured)
 
-**Kết quả:**
-- Fish shell làm default với Tide prompt đẹp
-- Tất cả PATH tự động (pyenv, fnm, aws, psql...)
-- Keyboard shortcuts works ngay (Ctrl+R, z command...)
-- Không cần config gì thêm!
+### **Step 2: Fish Shell**
+- Set Fish as **default shell**
+- IDEs installed later will auto-detect Fish!
+
+### **Step 3: IDEs**
+- Install JetBrains IDEs & Android Studio
+- **Automatically use Fish** (because Fish is default)
+- **No manual configuration needed!**
+
+---
+
+## 📦 Packages to be Installed
+
+### **CLI Tools** (Step 1)
+- git, fish, fnm, pyenv, direnv
+- fzf, zoxide, bat, eza, ripgrep
+- awscli, azure-cli, libpq
+
+### **GUI Apps** (Step 1)
+- **Dev:** VSCode, Docker, Postman, TablePlus, Fork
+- **Browser:** Chrome, Arc
+- **Productivity:** Slack, Notion, Rectangle, Clipy
+- **Media:** VLC, IINA
+- **Utilities:** Keka, AppCleaner, Stats
+
+### **IDEs** (Step 3)
+- PyCharm, WebStorm, GoLand, DataGrip
+- Android Studio
+
+### **Fish Plugins** (Step 2)
+- Tide (beautiful prompt)
+- fzf.fish (fuzzy search)
+- done (notifications)
+
+---
+
+## ✨ Features
+
+### **Fish Shell with Tide Prompt**
+```fish
+╭─  ~/projects/app  main ⇡1  🐍 3.12.0  ⬢ 20.0.0  5s ─╮
+╰─ ❯
+```
+- Git branch & status
+- Python/Node versions
+- Command duration
+- Beautiful icons (Nerd Font)
+
+### **Auto-configured PATH**
+- pyenv, fnm, AWS CLI, Azure CLI, PostgreSQL client
+- All tools work immediately, no configuration needed!
+
+### **Keyboard Shortcuts**
+- **Ctrl+R** - Search command history (fzf)
+- **Ctrl+Alt+F** - Search files
+- **z <keyword>** - Smart directory jump (zoxide)
+
+### **Nerd Font & Terminal Icons**
+- Auto-install MesloLGS Nerd Font
+- VSCode terminal: Auto-configured
+- JetBrains IDEs: Configuration guide
 
 ---
 
 ## 📚 Documentation
 
-- **app/README.md** - Hướng dẫn đầy đủ (31KB)
-- **app/FISH_PLUGINS.md** - Fish plugins guide (17KB)
+### **Full Guide:**
+→ **[SETUP-GUIDE.md](SETUP-GUIDE.md)** - Detailed step-by-step guide, troubleshooting, FAQ
+
+### **Per-folder Guides:**
+- **[1-app/README.md](1-app/README.md)** - Apps & tools setup
+- **[2-fish-shell/README.md](2-fish-shell/README.md)** - Fish shell setup
+- **[2-fish-shell/CONFIGURE-IDES.md](2-fish-shell/CONFIGURE-IDES.md)** - Manual IDE config (if needed)
 
 ---
 
-## 🎯 After Reset Mac
+## 🎯 After Setup
 
-### 1. Copy folder này sang Mac mới
-- USB drive
-- Cloud (Google Drive, Dropbox...)
-- AirDrop
+### **1. Configure Terminal Font** (For icons to display)
 
-### 2. Run script
-```bash
-cd /Volumes/DATA/mac-backup/app
-./setup-mac.sh
+**iTerm2 / Terminal.app:**
+```
+Preferences → Profiles → Font → MesloLGS Nerd Font Mono (size 13)
 ```
 
-### 3. Wait 20-40 minutes
-- Script tự động làm tất cả
-- Có thể làm việc khác trong lúc chờ
-
-### 4. Restart terminal
-```bash
-exec fish
+**JetBrains IDEs:**
+```
+Settings → Editor → Color Scheme → Console Font
+✅ Use console font instead of default
+Font: MesloLGS Nerd Font Mono, Size: 13
 ```
 
-### 5. Configure Tide (optional)
-```bash
+**VSCode:** ✅ Already auto-configured!
+
+### **2. Configure Tide Prompt**
+
+```fish
 tide configure
 ```
+Choose style: **Rainbow** (recommended)
 
-### 6. Install manual apps
-Check `app/manual-apps.txt` (25 apps):
-- Microsoft Office
-- Games (League of Legends)
-- Music tools (Cubase, Steinberg...)
-- Vietnamese apps (EVKey, Zalo)
-- Others...
+### **3. Git Config**
 
-### 7. Additional setup
 ```bash
-# Git
 git config --global user.name "Your Name"
 git config --global user.email "your@email.com"
+```
 
-# SSH
+### **4. SSH Keys**
+
+```bash
 ssh-keygen -t ed25519 -C "your@email.com"
-
-# AWS
-aws configure
-
-# Azure
-az login
-```
-
-### 8. Done! 🎉
-
----
-
-## 💡 Features
-
-### Fish Shell
-- ✅ Default shell (tự động set)
-- ✅ Tide prompt (đẹp, hiển thị Git/Python/Node versions)
-- ✅ fzf integration (Ctrl+R search history, Ctrl+Alt+F search files)
-- ✅ zoxide (smart cd: `z project` thay vì `cd ~/long/path`)
-- ✅ done (notifications cho long commands)
-
-### Auto-configured PATH
-- ✅ pyenv (Python version manager)
-- ✅ fnm (Node.js version manager)
-- ✅ libpq (PostgreSQL client: psql, pg_dump)
-- ✅ AWS CLI, Azure CLI
-- ✅ All Homebrew packages
-
-### Keyboard Shortcuts (works ngay)
-- **Ctrl+R** - Search command history (fzf)
-- **Ctrl+Alt+F** - Search files (fzf)
-- **z <keyword>** - Smart jump to directory (zoxide)
-- **zi** - Interactive directory jump
-
----
-
-## 📊 Stats
-
-| Item | Count | Time |
-|------|-------|------|
-| **CLI Tools** | 11 | ~5 min |
-| **GUI Apps** | 28 | ~20-30 min |
-| **Fish Plugins** | 4 | ~1 min |
-| **Manual Apps** | 25 | ~30-60 min (manual) |
-| **Total** | **68 packages** | ~1-2 hours |
-
----
-
-## 🔧 Maintenance
-
-### Update Brewfile
-```bash
-cd /Volumes/DATA/mac-backup/app
-brew bundle dump --force
-```
-
-### Backup to cloud
-```bash
-# Sync to Google Drive/Dropbox
-cp -r /Volumes/DATA/mac-backup ~/Google\ Drive/
-
-# Or commit to Git
-cd /Volumes/DATA/mac-backup
-git add .
-git commit -m "Update packages"
-git push
 ```
 
 ---
 
 ## ❓ Quick FAQ
 
-**Q: Mất bao lâu?**
-A: ~20-40 phút auto-install + 30-60 phút manual apps
+**Q: Why must IDEs be installed last?**
+→ IDEs detect default shell on first launch. Install after Fish is default → IDEs auto-use Fish!
 
-**Q: Fish có tự động nhận PATH không?**
-A: CÓ! Script đã config sẵn tất cả.
+**Q: What about VSCode?**
+→ VSCode is auto-configured via settings.json, so it's OK to install in step 1.
 
-**Q: Cần config gì thêm không?**
-A: KHÔNG! Chỉ cần Git/SSH/AWS config.
+**Q: Does Fish shell auto-detect PATH?**
+→ YES! Script pre-configures everything (pyenv, fnm, AWS, etc.)
 
-**Q: Work trên M1 Mac không?**
-A: CÓ! Đã optimize cho ARM64.
+**Q: Icons not displaying?**
+→ Configure terminal font to "MesloLGS Nerd Font Mono" (see guide above)
 
----
-
-## 📖 Full Documentation
-
-→ Xem **app/README.md** (31KB) cho:
-- Chi tiết từng bước
-- Troubleshooting
-- Python/Node.js usage
-- Tips & tricks
-- Checklist đầy đủ
-
-→ Xem **app/FISH_PLUGINS.md** (17KB) cho:
-- Tide configuration
-- fzf keyboard shortcuts
-- zoxide usage examples
-- done customization
+**Q: How long does it take?**
+→ ~30-45 minutes automated + 10-15 minutes manual config
 
 ---
 
-**Enjoy your fresh Mac! 🚀**
+## 🔧 Maintenance
+
+### **Update Brewfile**
+```bash
+cd 1-app
+brew bundle dump --force
+```
+
+### **Update Brewfile-IDEs**
+```bash
+cd 3-ides
+brew bundle dump --force --file=Brewfile-IDEs
+```
+
+---
+
+## 📊 Stats
+
+| Category | Count | Time |
+|----------|-------|------|
+| CLI Tools | 15 | ~5 min |
+| GUI Apps | 25 | ~15-20 min |
+| IDEs | 5 | ~10-15 min |
+| Fish Plugins | 3 | ~2 min |
+| **Total** | **48 packages** | **~30-45 min** |
+
+---
+
+**🎉 Enjoy your fresh Mac setup!**
+
+See [SETUP-GUIDE.md](SETUP-GUIDE.md) for complete details.
