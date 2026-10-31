@@ -13,6 +13,10 @@ brew "fnm"              # Node.js version manager
 brew "direnv"           # Environment variable manager
 brew "fzf"              # Fuzzy finder
 brew "zoxide"           # Smart directory jumper
+brew "fd"               # Fast find (fzf.fish file search, Ctrl+Alt+F)
+brew "bat"              # cat with syntax highlighting (fzf.fish previews)
+brew "eza"              # ls with icons and git status
+brew "git-delta"        # Readable git diffs (set as git pager by setup-fish.sh)
 brew "rclone"           # Google Drive / cloud storage sync
 
 # Fonts (for Tide prompt)

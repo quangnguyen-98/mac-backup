@@ -163,6 +163,13 @@ if status is-interactive
     if command -v zoxide > /dev/null
         zoxide init fish --cmd cd | source
     end
+
+    # eza: ls with icons and git status (ll = long list, lt = tree)
+    if command -v eza > /dev/null
+        alias ls 'eza --icons --group-directories-first'
+        alias ll 'eza -l --icons --group-directories-first --git'
+        alias lt 'eza --tree --level=2 --icons'
+    end
 end
 
 # fzf key bindings come from the fzf.fish plugin (Ctrl+R history, Ctrl+Alt+F files)
@@ -225,6 +232,20 @@ echo "🔔 Installing done (command notifications)..."
 fish -c "fisher install franciscolourenco/done"
 echo -e "${GREEN}✅ done installed${NC}"
 echo ""
+
+echo "🧩 Installing replay, puffer-fish, autopair, sponge..."
+fish -c "fisher install jorgebucaran/replay.fish nickeb96/puffer-fish jorgebucaran/autopair.fish meaningful-ooo/sponge"
+echo -e "${GREEN}✅ replay (run bash lines), puffer-fish (!! !\$ ...), autopair, sponge installed${NC}"
+echo ""
+
+# git: delta as the pager for readable diffs
+if command -v delta &> /dev/null; then
+    git config --global core.pager delta
+    git config --global interactive.diffFilter "delta --color-only"
+    git config --global delta.navigate true
+    echo -e "${GREEN}✅ git uses delta for diffs${NC}"
+    echo ""
+fi
 
 sleep 1
 
