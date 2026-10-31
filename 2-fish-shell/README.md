@@ -68,10 +68,11 @@ Có thể hiển thị:
 
 ### 1. Set font trong Terminal app của bạn
 
-**iTerm2:**
+**iTerm2:** `setup-fish.sh` tự nạp cài đặt từ `iterm2/com.googlecode.iterm2.plist` (profile, font MesloLGS Nerd Font Mono, phím tắt).
+Cập nhật snapshot sau khi đổi cài đặt iTerm2 (thoát iTerm2 trước):
 ```
-Preferences (Cmd+,) → Profiles → Text → Font
-Chọn: MesloLGS Nerd Font Mono, Size: 13
+defaults export com.googlecode.iterm2 2-fish-shell/iterm2/com.googlecode.iterm2.plist
+plutil -convert xml1 2-fish-shell/iterm2/com.googlecode.iterm2.plist
 ```
 
 **Terminal.app:**

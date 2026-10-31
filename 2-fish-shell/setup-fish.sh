@@ -263,6 +263,21 @@ fi
 
 echo ""
 
+# Restore iTerm2 settings (profile, font, keys) from the snapshot in this repo.
+# iTerm2 rewrites its settings on quit, so it must not be running while they are imported.
+ITERM2_PLIST="$SCRIPT_DIR/iterm2/com.googlecode.iterm2.plist"
+if [ -f "$ITERM2_PLIST" ]; then
+    if pgrep -xq iTerm2; then
+        echo -e "${YELLOW}⚠️  iTerm2 is running - quit it and re-run, or import later:${NC}"
+        echo "   defaults import com.googlecode.iterm2 \"$ITERM2_PLIST\""
+    else
+        defaults import com.googlecode.iterm2 "$ITERM2_PLIST"
+        echo -e "${GREEN}✅ iTerm2 settings restored${NC}"
+    fi
+fi
+
+echo ""
+
 # Auto-configure VSCode terminal font
 VSCODE_SETTINGS="$HOME/Library/Application Support/Code/User/settings.json"
 if [ -f "$VSCODE_SETTINGS" ]; then
@@ -310,7 +325,7 @@ echo "Next steps:"
 echo "  1. ${BOLD}Set font in your Terminal app:${NC}"
 echo ""
 echo "     ${YELLOW}iTerm2:${NC}"
-echo "       Preferences → Profiles → Text → Font → ${BOLD}MesloLGS Nerd Font Mono${NC}"
+echo "       Restored from 2-fish-shell/iterm2/ (font MesloLGS Nerd Font Mono) ✅"
 echo ""
 echo "     ${YELLOW}Terminal.app:${NC}"
 echo "       Preferences → Profiles → Font → ${BOLD}MesloLGS Nerd Font Mono${NC}"
