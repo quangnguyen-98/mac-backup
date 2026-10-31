@@ -72,7 +72,7 @@ echo $SHELL
 # Should show: /opt/homebrew/bin/fish
 
 # Test Fish features
-z <dir>          # zoxide smart jump
+cd <dir>         # zoxide smart jump
 Ctrl+R           # fzf history search
 python --version # Should show Python from pyenv
 node --version   # Should show Node from fnm

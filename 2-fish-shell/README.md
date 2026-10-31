@@ -126,8 +126,9 @@ Chọn 1 trong 3 styles:
 
 ### Smart directory jump (zoxide)
 ```fish
-z project          # Jump to most-used directory matching "project"
-z doc download     # Jump to ~/Documents/Downloads
+cd project         # Jump to most-used directory matching "project"
+cd doc download    # Jump to ~/Documents/Downloads
+cdi                # Pick a directory interactively
 ```
 
 ### Fuzzy search

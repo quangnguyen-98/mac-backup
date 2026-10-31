@@ -96,42 +96,9 @@ else if test -d /usr/local
     eval (/usr/local/bin/brew shellenv)
 end
 
-# Python (pyenv)
-if command -v pyenv > /dev/null
-    pyenv init - | source
-    pyenv virtualenv-init - | source
-end
-
 # Node.js (fnm)
 if status is-interactive; and command -v fnm > /dev/null
     fnm env --use-on-cd | source
-end
-
-# Go (goenv)
-if command -v goenv > /dev/null
-    set -gx GOENV_ROOT \$HOME/.goenv
-    fish_add_path \$GOENV_ROOT/bin
-    goenv init - | source
-    fish_add_path \$GOROOT/bin
-    fish_add_path \$GOPATH/bin
-end
-
-# Java (jenv)
-if command -v jenv > /dev/null
-    set -gx JENV_ROOT \$HOME/.jenv
-    fish_add_path \$JENV_ROOT/bin
-    jenv init - | source
-end
-
-# Rust (rustup & cargo)
-if test -f ~/.cargo/env.fish
-    source ~/.cargo/env.fish
-end
-
-# uv (Python package manager)
-if command -v uv > /dev/null
-    # uv is usually installed to ~/.local/bin, already in PATH
-    # No additional setup needed
 end
 
 # PostgreSQL client (libpq)
@@ -139,34 +106,13 @@ if test -d $HOMEBREW_PREFIX/opt/libpq/bin
     fish_add_path $HOMEBREW_PREFIX/opt/libpq/bin
 end
 
-# Direnv
-if command -v direnv > /dev/null
-    direnv hook fish | source
-end
-
-# fzf (Fuzzy Finder)
-if command -v fzf > /dev/null
-    fzf --fish | source
-end
-
-# zoxide (Smart cd)
-if command -v zoxide > /dev/null
-    zoxide init fish | source
-    alias cd='z'  # Use zoxide for smart directory jump
-end
-
 # Custom bin directories (for CLI tools installed later)
-# Common locations for user-installed binaries
 if test -d ~/.local/bin
-    fish_add_path ~/.local/bin  # Python pip --user, pipx, etc.
+    fish_add_path ~/.local/bin  # uv tools, pipx, etc.
 end
 
 if test -d ~/bin
     fish_add_path ~/bin  # User scripts
-end
-
-if test -d ~/.cargo/bin
-    fish_add_path ~/.cargo/bin  # Rust cargo install
 end
 
 if test -d ~/go/bin
@@ -181,16 +127,45 @@ if test -d ~/Library/Android/sdk
     fish_add_path $ANDROID_HOME/emulator  # Android emulator
 end
 
-# Java (if installed)
-# Will use the latest version if multiple installed
-if test -d /Library/Java/JavaVirtualMachines
-    set -l java_homes /Library/Java/JavaVirtualMachines/*.jdk/Contents/Home
-    if test (count \$java_homes) -gt 0; and test -d \$java_homes[1]
-        # Use the last (latest) version
-        set -gx JAVA_HOME \$java_homes[-1]
-        fish_add_path \$JAVA_HOME/bin
+# Java: the JBR bundled with Android Studio
+set -l android_studio_jbr "/Applications/Android Studio.app/Contents/jbr/Contents/Home"
+if test -d $android_studio_jbr
+    set -gx JAVA_HOME $android_studio_jbr
+    fish_add_path $JAVA_HOME/bin
+end
+
+# pnpm
+set -gx PNPM_HOME ~/Library/pnpm
+if not contains -- $PNPM_HOME $PATH
+    set -gx PATH $PNPM_HOME $PATH
+end
+
+# Python from python.org (if installed): the default python3 when pyenv pins nothing.
+# Its installer appends its own `set -x PATH ...` line to this file - delete that line,
+# it would put this Python in front of the pyenv shims.
+if test -d /Library/Frameworks/Python.framework/Versions/Current/bin
+    fish_add_path -gP /Library/Frameworks/Python.framework/Versions/Current/bin
+end
+
+# Python (pyenv) - keep it after every other PATH change so its shims come first
+if command -v pyenv > /dev/null
+    pyenv init - | source
+end
+
+# Interactive-only hooks
+if status is-interactive
+    # direnv: load .envrc on cd
+    if command -v direnv > /dev/null
+        direnv hook fish | source
+    end
+
+    # zoxide: smart `cd` (also adds `cdi` for interactive pick)
+    if command -v zoxide > /dev/null
+        zoxide init fish --cmd cd | source
     end
 end
+
+# fzf key bindings come from the fzf.fish plugin (Ctrl+R history, Ctrl+Alt+F files)
 
 # Editor
 set -gx EDITOR vim
@@ -356,7 +331,7 @@ echo ""
 echo "  4. ${BOLD}Enjoy your beautiful prompt!${NC} 🎨"
 echo "     • Git info, Python/Node versions shown automatically"
 echo "     • Ctrl+R: Search command history"
-echo "     • z <dir>: Smart directory jump"
+echo "     • cd <dir>: Smart directory jump (zoxide), cdi to pick"
 echo ""
 echo -e "${GREEN}🎉 Happy coding!${NC}"
 echo ""

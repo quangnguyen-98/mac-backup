@@ -114,7 +114,7 @@ mac-backup-main/
 ### **Keyboard Shortcuts**
 - **Ctrl+R** - Search command history (fzf)
 - **Ctrl+Alt+F** - Search files
-- **z <keyword>** - Smart directory jump (zoxide)
+- **cd <keyword>** - Smart directory jump (zoxide; `cdi` to pick)
 
 ### **Nerd Font & Terminal Icons**
 - Auto-install MesloLGS Nerd Font

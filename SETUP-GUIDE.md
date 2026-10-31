@@ -60,14 +60,12 @@ cd ../2-fish-shell
 ✅ Create `~/.config/fish/config.fish` with PATH setup for:
 - Homebrew
 - Python (pyenv)
-- Node.js (fnm)
-- Go (goenv)
-- Java (jenv)
-- Rust (rustup)
+- Node.js (fnm), pnpm
 - PostgreSQL (libpq)
-- Direnv, fzf, zoxide
+- Direnv, zoxide (as `cd`)
 - Android SDK (auto-detect)
-- Java JDK (auto-detect)
+- Java: Android Studio's bundled JBR (auto-detect)
+- Python from python.org as the fallback `python3` (auto-detect)
 
 ✅ Install Fisher plugin manager
 ✅ Install Tide prompt (you'll configure style with `tide configure`)
@@ -293,8 +291,9 @@ cat ~/.ssh/id_ed25519.pub  # Copy and add to GitHub/GitLab
 ### Fish Shell Tips:
 
 ```fish
-# Smart directory jump (instead of cd)
-z project          # Jump to ~/projects/my-project
+# Smart directory jump (zoxide replaces cd)
+cd project         # Jump to ~/projects/my-project
+cdi                # Pick a directory interactively
 
 # Fuzzy search history
 Ctrl+R
