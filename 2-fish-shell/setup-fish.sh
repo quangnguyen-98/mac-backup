@@ -98,7 +98,7 @@ end
 
 # Node.js (fnm)
 if status is-interactive; and command -v fnm > /dev/null
-    fnm env --use-on-cd | source
+    fnm env --use-on-cd --log-level quiet | source
 end
 
 # PostgreSQL client (libpq)

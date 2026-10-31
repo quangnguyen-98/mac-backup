@@ -1,5 +1,5 @@
 # Homebrew Bundle - Essential Tools & Apps
-# Generated: 2025-10-26
+# Generated: 2025-10-26, updated: 2026-11-01
 # NOTE: IDEs are in separate 3-ides/Brewfile-IDEs to install AFTER Fish is set as default shell
 
 # Taps
@@ -7,54 +7,68 @@ tap "ngrok/ngrok"
 
 # Essential CLI Tools
 brew "git"              # Version control
+brew "gh"               # GitHub CLI
 brew "fish"             # Shell
 brew "fnm"              # Node.js version manager
 brew "direnv"           # Environment variable manager
 brew "fzf"              # Fuzzy finder
 brew "zoxide"           # Smart directory jumper
+brew "rclone"           # Google Drive / cloud storage sync
 
 # Fonts (for Tide prompt)
-tap "homebrew/cask-fonts"
 cask "font-meslo-lg-nerd-font"  # Nerd Font for Tide icons
 
 # Cloud & DevOps
 brew "awscli"           # AWS command line
-brew "azure-cli"        # Azure command line
+cask "session-manager-plugin"   # AWS SSM sessions (DB tunnels via bastion)
 
 # Python Development
 brew "pyenv"            # Python version manager
 brew "pyenv-virtualenv" # Python virtual environments
 brew "uv"               # Fast Python package manager (pip alternative, 10-100x faster)
 
+# Go Development
+brew "go"               # Go toolchain
+brew "golangci-lint"    # Go linter
+brew "golang-migrate"   # DB migrations (migrate CLI)
+
+# Android
+brew "openjdk@17"       # JDK 17 for Gradle builds that pin it (Android Studio bundles JBR 21)
+brew "scrcpy"           # Mirror / control an Android device over adb
+brew "jadx"             # APK decompiler
+
 # Database
 brew "libpq"            # PostgreSQL client only (psql, pg_dump)
+
+# Documents & archives
+brew "pandoc"           # Document converter
+brew "poppler"          # PDF tools (pdftotext, pdftoppm)
+brew "ghostscript"      # PDF / PostScript processing
+brew "p7zip"            # 7z archives
 
 # GUI Applications - Development Tools (NOT IDEs - those are in 3-ides)
 cask "visual-studio-code"    # Code editor (will be auto-configured for Fish)
 cask "postman"               # API testing
-cask "docker"                # Container platform
+cask "docker-desktop"        # Container platform
 cask "ngrok"                 # Tunneling
 cask "github"                # GitHub Desktop
 cask "gitkraken"             # Git GUI client
 
 # GUI Applications - Browsers
 cask "google-chrome"         # Web browser
-cask "firefox"               # Web browser
 cask "microsoft-edge"        # Microsoft Edge
 
 # GUI Applications - Communication
 cask "slack"                 # Team communication
 cask "telegram"              # Messaging
-cask "zoom"                  # Video conferencing
-cask "messenger"             # Facebook Messenger
 
 # GUI Applications - Utilities
 cask "iterm2"                # Terminal replacement
 cask "the-unarchiver"        # Archive extractor
-cask "onyx"                  # System maintenance
 cask "rectangle"             # Window manager (better than Spectacle)
 cask "vlc"                   # Media player
-cask "wireguard-tools"       # VPN client
-cask "anydesk"               # Remote desktop
 cask "google-drive"          # Cloud storage
 cask "folx"                  # Download manager
+
+# Not installable via Homebrew - see manual-apps.txt
+# - bee (Backlog CLI): npm i -g @nulab/bee (after fnm installs Node)

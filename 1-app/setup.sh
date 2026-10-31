@@ -116,12 +116,11 @@ export PATH="\$PYENV_ROOT/bin:\$PATH"
 if command -v pyenv >/dev/null 2>&1; then
     eval "\$(pyenv init --path)"
     eval "\$(pyenv init -)"
-    eval "\$(pyenv virtualenv-init -)"
 fi
 
 # Node.js (fnm)
 if command -v fnm >/dev/null 2>&1; then
-    eval "\$(fnm env --use-on-cd)"
+    eval "\$(fnm env --use-on-cd --log-level quiet)"
 fi
 
 # PostgreSQL client
@@ -139,8 +138,7 @@ fi
 
 # zoxide
 if command -v zoxide >/dev/null 2>&1; then
-    eval "\$(zoxide init zsh)"
-    alias cd='z'
+    eval "\$(zoxide init zsh --cmd cd)"  # smart cd (cdi to pick interactively)
 fi
 
 # Custom bin
